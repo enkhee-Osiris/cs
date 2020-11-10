@@ -1,50 +1,104 @@
-# cs_go_cfg
+# CS:GO cfg
 
-OSKO - SUGA's cs go config
+Osiris's cs go config
+
+## Steam
+
+```
+steamID: STEAM_0:0:525522053
+steamID3: [U:1:1051044106]
+steamID64: 76561199011309834
+customURL: http://steamcommunity.com/id/osko_suga
+profile: http://steamcommunity.com/profiles/76561199011309834
+profile created: December 18th, 2019
+name: .
+real name: .
+location: Ulaanbaatar, Ulaanbaatar, Mongolia
+```
+
+## Launch option
+
+```
+-novid -freq 144 -tickrate 128 -console +exec autoexec
+```
+
+## LAN Game options
+
+### WARMUP
+
+```
+mp_startmoney "16000"
+sv_cheats "1"
+sv_infinite_ammo "1"
+sv_grenade_trajectory "1"
+mp_roundtime_defuse "60"
+ammo_grenade_limit_default "1"
+ammo_grenade_limit_flashbang "2"
+ammo_grenade_limit_total "4"
+mp_freezetime "0"
+sv_showimpacts "2"
+mp_restartgame "1"
+mp_limitteams "0"
+mp_autoteambalance "0"
+bot_kick all
+```
+
+### WARMUP Copiable
+
+```
+mp_startmoney "16000";sv_cheats "1";sv_infinite_ammo "1";sv_grenade_trajectory "1";mp_roundtime_defuse "60";ammo_grenade_limit_default "1";ammo_grenade_limit_flashbang "2";ammo_grenade_limit_total "4";mp_freezetime "0";sv_showimpacts "2";mp_restartgame "1";mp_limitteams "0";mp_autoteambalance "0";bot_kick all;
+```
+
+### COMPETITIVE
+
+```
+game_mode "1"
+game_type "0"
+exec gamemode_competitive
+```
+
+## In Game options
+
+```
+voice_mixer_volume "0.5"
+
+snd_mixahead "0.05"
+snd_headphone_pan_exponent "2"
+snd_musicvolume "0.0"
+snd_tensecondwarning_volume "0.04"
+
+cl_cmdrate "128"
+cl_updaterate "128"
+rate "786432"
+cl_interp "1"
+cl_interp_ratio "2"
+
+m_rawinput "1"
+m_mouseaccel1 "0"
+m_mouseaccel2 "0"
+
+r_drawtracers_firstperson "0"
+cl_autowepswitch "0"
+hud_showtargetid "1"
+hud_scaling "0.95"
+fps_max "700"
+cl_autohelp "0"
+cl_showhelp "0"
+
+net_graph "0"
+net_graphpos "2"
+```
+
+## Anti-Young
 
 ```
 hud_showtargetid "0"
 cl_hide_avatar_images "1"
 cl_sanitize_player_names "1"
-
-// buy binds
-bind "kp_end" "buy vest;"
-bind "kp_leftarrow" "buy vesthelm;"
-bind "kp_pgup" "buy smokegrenade;"
-bind "kp_rightarrow" "buy hegrenade;"
-bind "kp_pgdn" "buy flashbang; buy flashbang;"
-bind "kp_del" "buy incgrenade; buy molotov;"
-bind "kp_plus" "buy flashbang; buy flashbang; buy molotov; buy smokegrenade;"
-bind "kp_minus" "buy ak47; buy m4a1;"
-bind "kp_multiply" "buy famas; buy galilar;"
-bind "kp_enter" "buy defuser;"
-
-bind "shift" "+speed; r_cleardecals"
-bind "mwheeldown" "+jump"
-
-// crosshair
-cl_crosshairalpha "211"
-cl_crosshaircolor "5"
-cl_crosshaircolor_b "50"
-cl_crosshaircolor_r "50"
-cl_crosshaircolor_g "250"
-cl_crosshairdot "0"
-cl_crosshairgap "-2"
-cl_crosshairsize "3"
-cl_crosshairstyle "2"
-cl_crosshairusealpha "1"
-cl_crosshairthickness "1"
-cl_fixedcrosshairgap "-2"
-cl_crosshair_outlinethickness "0"
-cl_crosshair_drawoutline "0"
-
-alias "+jumpthrow" "+jump;-attack"
-alias "-jumpthrow" "-jump"
-bind "v" "+jumpthrow"
 ```
 
-## Copiable version
+### Copyable
 
 ```
-hud_showtargetid "0";cl_hide_avatar_images "1";cl_sanitize_player_names "1";bind "kp_end" "buy vest;";bind "kp_leftarrow" "buy vesthelm;";bind "kp_pgup" "buy smokegrenade;";bind "kp_rightarrow" "buy hegrenade;";bind "kp_pgdn" "buy flashbang;buy flashbang;";bind "kp_del" "buy incgrenade;buy molotov;";bind "kp_plus" "buy flashbang;buy flashbang;buy molotov;buy smokegrenade;";bind "kp_minus" "buy ak47;buy m4a1;";bind "kp_multiply" "buy famas;buy galilar;";bind "kp_enter" "buy defuser;";bind "shift" "+speed;r_cleardecals";bind "mwheeldown" "+jump";alias "+jumpthrow" "+jump;-attack";alias "-jumpthrow" "-jump";bind "v" "+jumpthrow";
+hud_showtargetid "0";cl_hide_avatar_images "1";cl_sanitize_player_names "1";
 ```
