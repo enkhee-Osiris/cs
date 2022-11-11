@@ -19,8 +19,8 @@ location: Ulaanbaatar, Ulaanbaatar, Mongolia
 ## Installation
 
 1. Find your config folder You can find CS:GOs config folder under the path: `<STEAM>\userdata\<YOURID>\730\local\cfg`. For example: `C:\Steam\userdata\525522053\730\local\cfg`.
-2. Download - https://github.com/enkhee-osiris/cs/archive/main.zip
-3. Extract `main.zip`, then move the contents to your config folder.
+2. Download - https://github.com/enkhee-osiris/cs/archive/master.zip
+3. Extract `cs-master.zip`, then move the contents from `cs-master` to your config folder.
 
 ## Launch option
 
