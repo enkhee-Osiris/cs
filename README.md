@@ -25,7 +25,7 @@ location: Ulaanbaatar, Ulaanbaatar, Mongolia
 ## Launch option
 
 ```
--novid -freq 240 -tickrate 128 -console +exec autoexec
+-novid -freq 144 -tickrate 128 -high -allow_third_party_software -console +exec autoexec
 ```
 
 ## LAN Game options
