@@ -6,13 +6,7 @@ Based on the [osko CS2 profile on Settings.gg](https://settings.gg/user/10510441
 
 ### Windows PowerShell
 
-Close CS2. For the private repo, install [GitHub CLI](https://cli.github.com/) and run `gh auth login` once with an account that has repo access. Then paste this into PowerShell.
-
-```powershell
-gh api 'repos/enkhee-Osiris/cs/contents/install.ps1?ref=master' -H 'Accept: application/vnd.github.raw+json' | Out-String | iex
-```
-
-For a public copy of this repository at the same GitHub address, use this command without GitHub CLI.
+Close CS2, then paste this into PowerShell.
 
 ```powershell
 irm 'https://raw.githubusercontent.com/enkhee-Osiris/cs/master/install.ps1' | iex
