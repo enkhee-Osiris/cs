@@ -4,6 +4,28 @@ Based on the [osko CS2 profile on Settings.gg](https://settings.gg/user/10510441
 
 ## Install
 
+### Windows PowerShell
+
+Close CS2. For the private repo, install [GitHub CLI](https://cli.github.com/) and run `gh auth login` once with an account that has repo access. Then paste this into PowerShell.
+
+```powershell
+gh api 'repos/enkhee-Osiris/cs/contents/install.ps1?ref=master' -H 'Accept: application/vnd.github.raw+json' | Out-String | iex
+```
+
+For a public copy of this repository at the same GitHub address, use this command without GitHub CLI.
+
+```powershell
+irm 'https://raw.githubusercontent.com/enkhee-Osiris/cs/master/install.ps1' | iex
+```
+
+The installer checks your Steam libraries for CS2 and backs up any `.cfg` files it replaces. If it cannot identify a single installation, download `install.ps1` and run it with `-CfgDirectory` set to your full `game\csgo\cfg` path.
+
+```powershell
+.\install.ps1 -CfgDirectory 'D:\SteamLibrary\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg'
+```
+
+### Manual install
+
 1. In Steam, right-click **Counter-Strike 2** and choose **Manage → Browse local files**. Open `game/csgo/cfg` inside that folder.
 2. Back up any files with the same names, then copy the repository's `.cfg` files into that folder.
 3. Set your resolution and refresh rate under **Settings → Video**. Enable **Developer Console** under **Settings → Game**, then run `exec autoexec` once from the main menu. Look for `Osiris CS2 config loaded`. Run `exec show_keybinds` to see the custom controls.
@@ -43,7 +65,7 @@ For grenade practice, use `noclip` to fly and `sv_rethrow_last_grenade` to repla
 
 ## Changes from CS:GO and the export
 
-- Rebuilt the exported white static crosshair using CS2's pixel-based settings. At 1280×960 the starting values are 2 px length, 2 px thickness and a 1 px gap. The old bars overlapped, so this is a close visual approximation. Page Up cycles dynamic, recoil-follow and static modes. [Valve crosshair update](https://www.counter-strike.net/newsentry/674006995886408819) · [Measured conversion](https://crosshairrestore.com/conversion-method/)
+- The default is ZywOo's cyan static crosshair, with 2 px length, thickness and gap at its authored height of 768p. CS2 scales those dimensions to your display resolution. Page Up cycles dynamic, recoil-follow and static modes. [ZywOo on ProSettings](https://prosettings.net/players/zywoo/) · [Valve crosshair update](https://www.counter-strike.net/newsentry/674006995886408819)
 - Set the radar HUD scale to the current maximum of 1.3 and fixed the F3/F4 volume commands. Enter opens the scoreboard, and holding Tab takes out the knife.
 - Replaced the legacy net graph with CS2 telemetry. Removed CS:GO tickrate and interpolation overrides, cache flushes, obsolete render commands, and jump-throw and clear-decals binds. Use separate jump and release inputs for jump throws. [Valve input rules](https://store.steampowered.com/news/app/730/view/6500469346429600837)
 - Moved the profile's `rate 786432` into the autoexec. Dropped the old launch flags, including `-high`, `-novid` and `-allow_third_party_software`. Steam documents the last flag as an opt-in for blocked software that needs to interact with the game process. [Valve Trusted Mode FAQ](https://help.steampowered.com/en/faqs/view/09A0-4879-4353-EF95)
