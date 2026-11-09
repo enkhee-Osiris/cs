@@ -1,64 +1,51 @@
-# CS:GO cfg
+# Osiris's Counter-Strike 2 config
 
-Osiris's cs go config
+Based on the [osko CS2 profile on Settings.gg](https://settings.gg/user/1051044106/cs2). The autoexec uses 1.04 sensitivity at 800 DPI (832 eDPI), 1.0 zoom sensitivity, and the exported viewmodel, HUD, audio and keybinds. Set 800 DPI and 1000 Hz polling in your mouse software.
 
-## Steam
+## Install
 
-```
-steamID: STEAM_0:0:525522053
-steamID3: [U:1:1051044106]
-steamID64: 76561199011309834
-customURL: http://steamcommunity.com/id/osko_suga
-profile: http://steamcommunity.com/profiles/76561199011309834
-profile created: December 18th, 2019
-name: .
-real name: .
-location: Ulaanbaatar, Ulaanbaatar, Mongolia
-```
+1. In Steam, right-click **Counter-Strike 2** and choose **Manage → Browse local files**. Open `game/csgo/cfg` inside that folder.
+2. Back up any files with the same names, then copy the repository's `.cfg` files into that folder.
+3. Set your resolution and refresh rate under **Settings → Video**. Enable **Developer Console** under **Settings → Game**, then run `exec autoexec` once from the main menu. Look for `Osiris CS2 config loaded`. Run `exec show_keybinds` to see the custom controls.
+4. Clear the old CS:GO launch options in Steam. The game normally runs `autoexec.cfg` at startup. If the load message is missing on restart, use `+exec autoexec.cfg` as the Steam launch option.
 
-## Installation
+The autoexec replaces the keys it lists. Other key assignments stay in place. To change an option that the autoexec sets, edit `osiris.cfg` so it survives the next launch.
 
-1. Find your config folder You can find CS:GOs config folder under the path: `<STEAM>\userdata\<YOURID>\730\local\cfg`. For example: `C:\Steam\userdata\1051044106\730\local\cfg`.
-2. Download - https://github.com/enkhee-osiris/cs/archive/master.zip
-3. Extract `cs-master.zip`, then move the contents from `cs-master` to your config folder.
+## Video and performance
 
-## Launch option
+The optional `cs2_video.txt` is for the display and GPU in the export. Set these values in the Video menu on a different PC. To use the file on the original setup, close CS2, back up your current `cs2_video.txt`, and put the new one in `Steam/userdata/<account ID>/730/local/cfg/`. Select stretched scaling in your display or GPU settings.
 
-```
--novid -freq 144 -tickrate 128 -high -allow_third_party_software -console +exec autoexec
-```
+| Setting | Starting point |
+| --- | --- |
+| Display | Fullscreen, 4:3 stretched, 1280×960 at 270 Hz |
+| Player contrast and shadows | Boost Player Contrast enabled, Global Shadow Quality High, Dynamic Shadows All |
+| Multisampling | 4× MSAA, down from 8× in the export |
+| Textures and shaders | Medium textures, 4× anisotropic filtering, High shaders |
+| Effects | Low particles, Ambient Occlusion disabled, HDR Performance, FSR disabled |
+| Latency | NVIDIA Reflex Enabled on supported GeForce GPUs, V-Sync disabled for this profile |
 
-## LAN Game options
+- Repeat the same demo segment at 4×, 2× and 8× MSAA. Compare 1% lows and frame-time spikes and check how clearly you can see targets at range. If you still see GPU-related drops, compare High and Low shader detail next. Keep Dynamic Shadows on All while testing so you can still see shadows cast by local lights.
+- Start with the exported caps of 501 FPS in game and 61 FPS in menus. Compare 501 with a lower cap your PC can sustain in busy rounds. Set the in-game cap in the main menu because CS2 locks `fps_max` while connected to a server. [Valve FPS cap update](https://www.counter-strike.net/newsentry/657081807721726196)
+- Keep Reflex on **Enabled** as the baseline. Test **Enabled + Boost** if lower latency is worth the extra power draw. If you use G-SYNC, Valve recommends pairing it with V-Sync and Reflex for smooth frame pacing. [NVIDIA Reflex in CS2](https://www.nvidia.com/en-eu/geforce/news/counter-strike-2-released-featuring-nvidia-reflex/) · [Valve video settings](https://help.steampowered.com/en/faqs/view/418E-7A04-B0DA-9032)
+- The autoexec shows frame time and ping, with network warnings starting at 0.5% missed ticks. Start with **Buffering to smooth over packet loss** at None on a stable connection. Try one tick if the HUD repeatedly shows loss or jitter and compare again. Extra buffering adds latency. [Valve telemetry guide](https://help.steampowered.com/en/faqs/view/5E6F-5B36-5485-F6B9)
 
-### WARMUP
+## Local practice
 
-```
-mp_startmoney "16000"
-sv_cheats "1"
-sv_infinite_ammo "1"
-sv_grenade_trajectory "1"
-mp_roundtime_defuse "60"
-ammo_grenade_limit_default "1"
-ammo_grenade_limit_flashbang "2"
-ammo_grenade_limit_total "4"
-mp_freezetime "0"
-sv_showimpacts "2"
-mp_restartgame "1"
-mp_limitteams "0"
-mp_autoteambalance "0"
-bot_kick all
-```
+Start **Practice → Competitive** and join a team before running these commands.
 
-### WARMUP Copiable
+| Console command | What it does |
+| --- | --- |
+| `exec warmup` | Starts a local round with instant respawns, infinite ammo, rifles and buying anywhere. |
+| `exec gren` | Loads the warmup rules and adds grenade trails, trajectory preview and bullet impacts. Buy grenades from the normal buy menu. |
+| `exec stop_warmup` or `exec comp` | Restores CS2's stock Competitive round rules with the repo's local overrides for free team selection, no bots and overtime. |
 
-```
-mp_startmoney "16000"; sv_cheats "1"; sv_infinite_ammo "1"; sv_grenade_trajectory "1"; mp_roundtime_defuse "60"; ammo_grenade_limit_default "1"; ammo_grenade_limit_flashbang "2"; ammo_grenade_limit_total "4"; mp_freezetime "0"; sv_showimpacts "2"; mp_restartgame "1"; mp_limitteams "0"; mp_autoteambalance "0"; bot_kick all
-```
+For grenade practice, use `noclip` to fly and `sv_rethrow_last_grenade` to replay your last throw. Use `toggle sv_grenade_trajectory_prac_pipreview` to switch the preview. These actions are available from the console so practice leaves the match keybinds alone.
 
-### COMPETITIVE
+## Changes from CS:GO and the export
 
-```
-game_mode "1"
-game_type "0"
-exec gamemode_competitive
-```
+- Rebuilt the exported white static crosshair using CS2's pixel-based settings. At 1280×960 the starting values are 2 px length, 2 px thickness and a 1 px gap. The old bars overlapped, so this is a close visual approximation. Page Up cycles dynamic, recoil-follow and static modes. [Valve crosshair update](https://www.counter-strike.net/newsentry/674006995886408819) · [Measured conversion](https://crosshairrestore.com/conversion-method/)
+- Set the radar HUD scale to the current maximum of 1.3 and fixed the F3/F4 volume commands. Enter opens the scoreboard, and holding Tab takes out the knife.
+- Replaced the legacy net graph with CS2 telemetry. Removed CS:GO tickrate and interpolation overrides, cache flushes, obsolete render commands, and jump-throw and clear-decals binds. Use separate jump and release inputs for jump throws. [Valve input rules](https://store.steampowered.com/news/app/730/view/6500469346429600837)
+- Moved the profile's `rate 786432` into the autoexec. Dropped the old launch flags, including `-high`, `-novid` and `-allow_third_party_software`. Steam documents the last flag as an opt-in for blocked software that needs to interact with the game process. [Valve Trusted Mode FAQ](https://help.steampowered.com/en/faqs/view/09A0-4879-4353-EF95)
+
+Console commands and ranges were checked against the [November 5, 2026 CS2 game dump](https://github.com/SteamTracking/GameTracking-CS2/tree/cce7bf1f190144c1c08fb0fe75fd3c9514f2637f/DumpSource2).
